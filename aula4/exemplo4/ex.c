@@ -2,23 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h> 
-#include <windows.h>
+#include <sys/time.h>
 
 #define TAMANHO 50000
 
 int main(){
 
-    LARGE_INTEGER frequencia;
-    LARGE_INTEGER t1, t2;
-    float tempoCPU;
-    QueryPerformanceFrequency(&frequencia);
+    struct timeval Start, End;
+
+    double tempoCPU;
 
     system("cls");
     int vetor[TAMANHO];
 
     srand(time(NULL));
 
-    QueryPerformanceCounter(&t1);
+    gettimeofday(&Start, NULL);
 
     for (int i = 0; i < TAMANHO; i++){
         vetor[i] = rand();
@@ -28,11 +27,11 @@ int main(){
         printf( "%i\n", vetor[i]);
     }
 
-    QueryPerformanceCounter(&t2);
+    gettimeofday(&End, NULL);
 
-    tempoCPU = (t2.QuadPart - t1.QuadPart) * 1.0 / frequencia.QuadPart;
+    tempoCPU = (End.tv_sec - Start.tv_sec) + (End.tv_usec - Start.tv_usec) / 1000000;
 
-    printf("Tempo de execucao: %f\n", tempoCPU);
+    printf("Tempo de execucao: %lf\n", tempoCPU);
     
     return 0;
 
