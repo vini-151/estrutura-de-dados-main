@@ -1,0 +1,3 @@
+Arroz 2 5.50
+Feijao 3 5.50
+Carne 6 10
