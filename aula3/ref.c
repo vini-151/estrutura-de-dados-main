@@ -16,6 +16,13 @@ void imprimeVetor(int *Array, int tamanho){
     
 }
 
+void apagaVetor(int *array, int tamanho){
+    for (int i = 0; i < tamanho; i++){
+        array[i] = 0;
+    }
+    
+}
+
 
 int main(){
     system("CLS");
@@ -27,7 +34,8 @@ int main(){
     modificaArray(meuArray, tamanho);
     printf("\n");
     imprimeVetor(meuArray, tamanho);
-
+    apagaVetor(meuArray, tamanho);
+    imprimeVetor(meuArray, tamanho);
     return 0;
     
 }
